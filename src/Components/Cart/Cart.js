@@ -11,6 +11,8 @@ const Cart = ({cart, handleRemove}) => {
                     <button onClick={() => handleRemove(tShirt)}>x</button>
                     </p> )
             }
+            
+            {cart.length === 0 ? <p>please add item </p> : <p>Thank you for shopping</p>}
         </div>
     );
 };
