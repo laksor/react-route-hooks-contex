@@ -1,5 +1,8 @@
 .TShirt-t{
     height: 400px;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+    margin-top: 5px;
 }
 .TShirt-t img{
     height: 250px;
