@@ -3,8 +3,8 @@ import './Cart.css';
 
 const Cart = ({cart, handleRemove}) => {
     return (
-        <div>
-            <h1>This is Cart</h1>
+        <div className="mt-5">
+            <h1 className="text-primary">This is Cart</h1>
             {
                 cart.map(tShirt => <p> 
                     {tShirt.name} 
