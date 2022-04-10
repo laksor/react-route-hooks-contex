@@ -1,13 +1,13 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, toLowerCase } from "react";
 import Cart from "../Cart/Cart";
 import useTShirt from "../hooks/useTShirt";
 import TShirt from "../TShirt/TShirt";
 import "./Home.css";
 
-export  const RingContext = createContext('Ring');
+export const RingContext = createContext("Ring");
 
 const Home = () => {
-  const [tShirts, setTShirts] = useTShirt();
+  const [tShirts] = useTShirt();
   const [cart, setCart] = useState([]);
 
   const handleAddToCart = (selectedItem) => {
@@ -24,11 +24,24 @@ const Home = () => {
     const rest = cart.filter((tShirt) => tShirt._id !== selectedItem._id);
     setCart(rest);
   };
+
+  const [searchResult, setSearchResult] = useState([]);
+
+  const handleSearch = event => {
+    const searchText =  event.target.value;
+    const match = tShirts.filter(t => t.name.includes(searchText));
+    setSearchResult(match);
+  }
+
   return (
-    <RingContext.Provider value='alur ring'>
+    <RingContext.Provider value="lur ring">
+      <div>
+        <input onChange={handleSearch} type="text" placeholder="Search" className="mt-5 rounded "></input>
+      </div>
+
       <div className="home-container">
         <div className="tShirt-container">
-          {tShirts.map((tShirt) => (
+          {searchResult.map((tShirt) => (
             <TShirt
               key={tShirt._id}
               tShirt={tShirt}
